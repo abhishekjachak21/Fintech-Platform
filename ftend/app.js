@@ -1,4 +1,5 @@
-const apiUrl = 'http://localhost:5000/api/transactions';
+// const apiUrl = 'http://localhost:5000/api/transactions';
+const apiUrl = 'https://fintech-bkend.onrender.com/api/transactions';
 
 async function deposit() {
     const name = document.getElementById('depositName').value;
