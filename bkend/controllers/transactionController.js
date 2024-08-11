@@ -1,24 +1,21 @@
-// backend/controllers/transactionController.js
 const Account = require('../models/Account');
 
-// Deposit money to account
+// Depositing money to account
 exports.deposit = async (req, res) => {
   const { name, amount } = req.body;
   try {
     let account = await Account.findOne({ name });
-    if (!account) {
-      account = new Account({ name, balance: amount });
-    } else {
-      account.balance += amount;
-    }
+    if (!account) account = new Account({ name, balance: amount });
+    else account.balance += amount;
     await account.save();
     res.json({ message: 'Deposit successful', account });
-  } catch (err) {
+  } 
+  catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-// Withdraw money from account
+// Withdraw 
 exports.withdraw = async (req, res) => {
   const { name, amount } = req.body;
   try {
@@ -37,7 +34,7 @@ exports.withdraw = async (req, res) => {
   }
 };
 
-// Get account balance
+// Get accbalance
 exports.getBalance = async (req, res) => {
   const { name } = req.params;
   try {
